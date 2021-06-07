@@ -1,0 +1,223 @@
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  body{
+    font-family: Rubik sans-serif;
+  }
+
+  header ul{
+    background-image: url("../img/fondo-header.jpg"); /* The image used */
+    height: 45vh; /* You must set a specified height */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover;   /* Resize the background image to cover the entire container */
+    margin: 0 auto;
+    padding: 0;
+  }
+  header ul li{
+    background-color: rgb(245, 244, 244, .8);
+    padding: 1.4rem;
+    border-radius: .3rem;
+    font-size: 1.5rem;
+    font-style: Rubik;
+    list-style: none;
+    width: 12%;
+    text-align: center;
+    font-weight: bold;
+
+  }
+  header ul li:last-child{
+    margin-right: 0;
+    text-align: center;
+
+  }
+  ul li:hover{
+      background-color: rgb(245, 244, 244, .3);
+  }
+  a{
+    text-decoration: none;
+    color: #fb6107;
+
+  }
+  .btn-success{
+    background-color: #fb6107;
+  }
+  .btn-secondary{
+    background-color: #5c8001;
+  }
+  .logo{
+    width: 10rem;
+    height: 10rem;
+    background-image: url('../img/logo.png');
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+    background-color: rgba(0, 0 ,12 , .4);
+    border: solid black;
+    border-radius: 10rem;
+  }
+  .logo:hover{
+    width: 10rem;
+    height: 10rem;
+    background-image: url('../img/logo1.png');
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+    background-color: rgba(12, 12 ,12 , .4);
+    border: solid black;
+    border-radius: 10rem;
+    border-radius: 10rem;
+    border: solid #D4AF37;
+
+  }
+  .juego{
+    display: block;
+    margin: 0;
+    padding: 0;
+    height: 38vh;
+    width: 100%;
+
+  }
+  .seccion1{
+    display: flex;
+    padding: 1rem;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .juego_dictado{
+    display: block;
+    margin: 0;
+    padding: 0;
+    height: 38vh;
+    width: 100%;
+  }
+  .seccion_dictado{
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    margin: 0 auto;
+    width: 100%;
+  }
+  #resultado1{
+    border: none;
+    width: 7rem;
+    font-size: 2rem;
+    background-color: transparent;
+  }
+  #resultado1:focus {
+  outline: none;
+
+}
+  .mensaje{
+    font-size: 6rem;
+    letter-spacing: 3rem;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    border: solid white;
+    position: absolute;
+    background-color: transparent;
+    margin: 0 auto;
+
+
+  }
+
+  }
+  .info-turno, .last-turno{
+    font-size: .8rem;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+  .time{
+    display: flex;
+    justify-content: space-around;
+    background-color: rgba(153, 255, 0, .7);
+    margin: 0 auto;
+    padding: 1.1rem 0;
+  }
+  .numeros{
+    font-size: 2rem;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    align-items: center;
+
+  }
+  .numeros .num1, .num2, #resultado1{
+    border: solid black;
+    border-radius: 10rem;
+    padding: 3rem;
+    margin: 0 .5rem auto;
+    font-size: 2rem;
+    width: 10rem;
+    text-align: center;
+  }
+  .operacion, .resultado{
+    font-size: 5rem;
+  }
+  p{
+    text-align: center;
+  }
+  .botones-general{
+    display: flex;
+    flex-direction: column;
+  }
+
+
+  #comprobar_dictado, #siguiente_dictado{
+    width: 30%;
+    padding: .5rem;
+    margin: 0 auto;
+  }
+  #leer_dictado {
+    width: 30%;
+    height: auto;
+    padding: 0;
+    margin-left: 0.2rem;
+
+  }
+  #texto_dictado{
+    width: 100%;
+    height: auto;
+    padding: 0;
+    margin: 0 auto;
+
+  }
+  #comprobar, #siguiente, #leer{
+    width: 100%;
+    height: 50%;
+    padding: .5rem;
+    margin: .5rem auto;
+  }
+
+
+  .info{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 1rem;
+    margin: 0 auto;
+  }
+  .botoneseinfo{
+    display: flex;
+    padding: .1rem;
+    margin: 0 auto;
+  }
+  .info_dictado{
+    display: flex;
+    justify-content: space-around;
+    padding: .5rem;
+    margin: 0 1rem auto;
+  }
+  footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    color: black;
+    background-color: rgba(153, 255, 0, .7);
+    padding: .7rem;
+    text-align: center;
+  }
