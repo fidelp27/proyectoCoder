@@ -121,8 +121,9 @@
     position: absolute;
     background-color: transparent;
     margin: 0 auto;
-
-
+  }
+  #a{
+    background-color: red;
   }
 
   }
@@ -221,3 +222,14 @@
     padding: .7rem;
     text-align: center;
   }
+.imagen-ahorcado{
+  display: flex;
+  width: 100px;
+  height: 200px;
+
+}
+.letraIngresada{
+  display: flex;
+  justify-content: flex-end;
+
+}

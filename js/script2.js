@@ -13,7 +13,7 @@ obtenerLocalStorage()
 function speak(texto){
   let msg = new SpeechSynthesisUtterance(texto);
   let voices = speechSynthesis.getVoices();
-  msg.voice = voices[8];
+  msg.voice = voices[5];
   msg.pitch = 0.4;
   msg.lang = 'es-ES';
   speechSynthesis.speak(msg);
@@ -163,3 +163,9 @@ let tiempo = setInterval(function() {
     time.innerHTML = "Bienvenido al juego"
   }
 }, 1000);
+
+
+//---------------------------------------------------------------//
+var cosa = "21";
+console.log(cosa.charAt(1));
+console.log(cosa.charAt(0));
