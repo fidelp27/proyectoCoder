@@ -222,14 +222,14 @@
     padding: .7rem;
     text-align: center;
   }
+.juegoGeneral{
+    justify-content: space-around;
+    position: relative;
+}
+
 .imagen-ahorcado{
-  display: flex;
+
   width: 100px;
   height: 200px;
-
-}
-.letraIngresada{
-  display: flex;
-  justify-content: flex-end;
 
 }

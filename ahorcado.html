@@ -19,6 +19,7 @@
     <li class="logo"></li>
     <li> <a href="./dictado.html">DICTADO</a></li>
     <li> <a href="./ahorcado.html">AHORCADO</a></li>
+    <li> <a href="">TIENDA</a></li>
   </ul>
 </header>
 
@@ -38,23 +39,40 @@
   <label for="facil">Difícil</label>
   <input type="radio" id="ultra" name="dificultad" value="4">
   <label for="facil">Ultra Difícil</label>
-  <button id="palabraMostrada" type="reset" name="button">Mostrar </button>
+
 </form>
 
-<div class="juego_ahorcado">
-  <div class="reto d-block">
+<div class="juegoGeneral d-flex">
 
+  <div class="bloque1 d-block">
+    <div class="letraIngresada d-block">
+      <input  type="text" id="letraIngresada" name=""  maxlength="1" onkeyup="javascript:this.value=this.value.toUpperCase()">
+      <button id="botonLetra" class="btn btn-warning" type="button" name="button">Letra</button>
+    </div>
+
+    <div class="IntentosLetras d-block">
+      <p class="intentosTotales">Intentos: </p>
+      <p class="intentosErroneos">Intentos Erroneos: </p>
+      <p class="intentosAcertados">Intentos Acertados: </p>
+    </div>
   </div>
-
-<div class="letraIngresada">
-  <input  type="text" id="letraIngresada" name=""  maxlength="1">
-  <button id="botonLetra" type="button" name="button"></button>
+  <div class="bloque2 d-block">
+    <div class="juego_ahorcado">
+      <div class="reto">
+      </div>
+    </div>
+  </div>
+  <div class="bloque3 d-flex">
+    <div class="letrasUsadas d-flex">
+      <p class="letras">Letras Usadas: </p>
+    </div>
+  </div>
+  <div class="bloque4 d-flex">
+    <div class="imagen-ahorcado d-inline-flex">
+      <img src="./img/base.png" id="img_juego"alt="">
+    </div>
+  </div>
 </div>
-<div class="imagen-ahorcado">
-  <img src="./img/base.png" id="img_juego"alt="">
-</div>
-</div>
-
 
 
 
