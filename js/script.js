@@ -80,7 +80,8 @@ botonSiguiente.addEventListener("click", function() {
   guardarLocalStorage();
   clearTime();
   limpiarValor();
-
+  countDownGame = 10
+  cuentaRegresiva()
 })
 
 //-------------------Boton Comprobar ---------------------------------//
@@ -90,7 +91,7 @@ botonComprobar.addEventListener("click", function() {
   comprobarResultado();
   scoring();
   guardarLocalStorage();
-
+  detenerTiempo()
 })
 //-------------------Local Storage-----------------------------------------//
 function guardarLocalStorage() {
@@ -175,4 +176,24 @@ function funWhite2() {
   mensaje.innerHTML = "";
   mensaje.style.display = "flex"
   prueba = setTimeout(funRed, 400);
+}
+//-------------------------contador segundos---------------------//
+let countDownGame = 10;
+let intervalo;
+function cuentaRegresiva(){
+  countDownGame;
+  document.getElementById('countDownGame').innerHTML = countDownGame;
+  if (countDownGame == 0) {
+    console.log(countDownGame);
+  }else {
+    --countDownGame;
+    intervalo = setTimeout("cuentaRegresiva()", 1000);
+    console.log(countDownGame);
+  }
+}
+
+
+//--------------------Detener Contador ---------------------------//
+function detenerTiempo(){
+  clearTimeout(intervalo)
 }

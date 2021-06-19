@@ -33,7 +33,7 @@
 <div class="juego_dictado">
 
   <div class="seccion_dictado">
-      <input type="text" id="texto_dictado" placeholder="Tu palabra es">
+      <input type="text" id="texto_dictado" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="Tu palabra es">
       <button id="leer_dictado" class="btn btn-danger" type="button" name="button">Escuchar</button>
   </div>
 

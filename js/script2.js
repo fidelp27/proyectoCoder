@@ -20,18 +20,19 @@ function speak(texto){
 }
 
 let boton = document.getElementById('leer_dictado');
-boton.addEventListener('click', function(){
+boton.addEventListener('click', () => {
   speak(texto[0]);
+  boton.innerHTML = "Escuchar de nuevo";
   console.log("texto:" + texto[0]);
   console.log(texto.length);
 })
 
 let comprobar = document.getElementById('comprobar_dictado');
-comprobar.addEventListener('click', function(){
+comprobar.addEventListener('click', ()=>{
   let palabra = document.getElementById('texto_dictado').value;
   console.log("palabra:" + palabra);
-  if (palabra == texto[0]) {
-    console.log("correcto");
+  if (palabra == texto[0].toUpperCase()) {
+    console.log("texto[0]");
     puntaje.push(5);
     speak("correcto");
     funGreen();
@@ -39,7 +40,7 @@ comprobar.addEventListener('click', function(){
   else {
     console.log("incorrecto");
     puntaje.push(-3);
-    speak("intenta de nuevo");
+    speak("Te equivocaste jajajaja pasa al siguiente");
     funRed();
   }
   guardarLocalStorage();
@@ -78,7 +79,7 @@ siguiente.addEventListener('click', function(){
   speak(texto[0]);
   console.log("texto:" + texto[0]);
   console.log(texto.length);
-  boton.innerHTML = "Escuchar de nuevo";
+  boton.innerHTML = "Escuchar";
   contador.push(1);
   clearTime();
   limpiarValor();
@@ -166,6 +167,3 @@ let tiempo = setInterval(function() {
 
 
 //---------------------------------------------------------------//
-var cosa = "21";
-console.log(cosa.charAt(1));
-console.log(cosa.charAt(0));
