@@ -12,6 +12,12 @@ let sumaPuntos;
 let mensaje = document.querySelector('.mensaje');
 let resultadoIngresado;
 let operacion = document.querySelector('.operacion').innerHTML;
+let countDownGame = 20;
+let intervalo;
+let Item = document.querySelector(".juego");
+let prueba;
+mensaje.style.display = "none"
+
 //---------------------------------------------------------------------//
 
 crearOperacion();
@@ -30,6 +36,8 @@ function crearOperacion() {
   resultadoSuma = parseInt(operador[0] + operador[1]);
   resultadoResta = parseInt(operador[0] - operador[1]);
   contador.push(1);
+  // countDownGame= 20;
+  cuentaRegresiva()
 }
 
 function scoring() {
@@ -54,7 +62,7 @@ function comprobarResultado() {
     puntaje.push(5);
     console.log(puntaje);
     funWhite();
-  }else {
+  }else{
     puntaje.push(-3);
     console.log(puntaje);
     funRed();
@@ -80,8 +88,8 @@ botonSiguiente.addEventListener("click", function() {
   guardarLocalStorage();
   clearTime();
   limpiarValor();
-  countDownGame = 10
-  cuentaRegresiva()
+  countDownGame = 20;
+  scoring();
 })
 
 //-------------------Boton Comprobar ---------------------------------//
@@ -91,7 +99,7 @@ botonComprobar.addEventListener("click", function() {
   comprobarResultado();
   scoring();
   guardarLocalStorage();
-  detenerTiempo()
+  detenerTiempo();
 })
 //-------------------Local Storage-----------------------------------------//
 function guardarLocalStorage() {
@@ -138,9 +146,6 @@ let tiempo = setInterval(function() {
 }, 1000);
 //---------------------------------fondo parpadeante ------------------------------//
 
-let Item = document.querySelector(".juego");
-let prueba;
-mensaje.style.display = "none"
 
 function clearTime() {
   Item.style.backgroundColor = "white";
@@ -154,8 +159,6 @@ function funRed() {
   mensaje.style.display = "flex"
   prueba = setTimeout(funWhite2, 400);
 }
-
-
 
 function funGreen() {
   Item.style.backgroundColor = "green";
@@ -178,22 +181,31 @@ function funWhite2() {
   prueba = setTimeout(funRed, 400);
 }
 //-------------------------contador segundos---------------------//
-let countDownGame = 10;
-let intervalo;
+
 function cuentaRegresiva(){
   countDownGame;
+  scoring();
   document.getElementById('countDownGame').innerHTML = countDownGame;
   if (countDownGame == 0) {
-    console.log(countDownGame);
+
+    funRed();
+    intentos();
+    puntaje.push(-3);
+  
+
   }else {
     --countDownGame;
     intervalo = setTimeout("cuentaRegresiva()", 1000);
-    console.log(countDownGame);
+
   }
 }
-
 
 //--------------------Detener Contador ---------------------------//
 function detenerTiempo(){
   clearTimeout(intervalo)
 }
+// let botonPausa = document.querySelector('#pausar')
+// botonPausa.addEventListener('click', ()=>{
+//   detenerTiempo()
+//   setTimeout('cuentaRegresiva()', 5000)
+// })

@@ -46,14 +46,11 @@ jQuery(document).ready(function($) {
 //----------------Crear juego---------------//
 function crearPalabra(arr){
   palabraAleatoria = arr[parseInt(Math.random()*arr.length)].toUpperCase();
-  console.log(palabraAleatoria);
   palabraJuego = palabraAleatoria.split('');
-  console.log(palabraJuego);
   guiones = [];
   for (let palabra of palabraJuego) {
     guiones.push('_');
   }
-  console.log(guiones.length)
 }
 
 
@@ -72,10 +69,9 @@ function errorLetra(letraIngresada){
     ++intento;
     letraUsada.push(letraIngresada);
     $('.letrasUsadas').append(`<p class="usadas"> - ${letraIngresada} </p>`);
-    $('.intentosTotales').html(`<p class="intentosTotales">Intentos: ${intento}</p>`)
-    $('.intentosErroneos').html(`<p class="intentosErroneos">Intentos Erróneos: ${intentoErroneo}</p>`)
-
-    }else {
+    $('.intentosTotales').html(`<p class="intentosTotales">Intentos: ${intento}</p>`);
+    $('.intentosErroneos').html(`<p class="intentosErroneos">Intentos Erróneos: ${intentoErroneo}</p>`);
+  }else {
     ++intentoAcertado;
     ++intento;
     $('.intentosAcertados').html(`<p class="intentosAcertados">Intentos Acertados: ${intentoAcertado}</p>`)
@@ -89,34 +85,48 @@ function errorLetra(letraIngresada){
 function finalizarJuego(){
     if (!guiones.includes('_')==true) {
       alert("ganaste");
-      efectoError()
+      setTimeout(recargarPagina(), 3000);
     }else if (intentoErroneo >= 7) {
       alert(`perdiste, la palabra era: ${palabraAleatoria}`);
-    }else {
-      console.log("Sigue jugando");
+      setTimeout(recargarPagina(), 5000);
     }
 }
-
-
-function efectoError(){
-  $('letraIngresada').animate({'top': '5px'}, slow)
-  $('letraIngresada').animate({'bottom': '10px'}, fast)
-  $('letraIngresada').animate({'top': '5px'}, slow)
-  $('letraIngresada').animate({'bottom': '10px'}, fast)
+function recargarPagina(){
+  window.location.reload(true);
 }
 
 
 //----------------Comprobar-------------------------//
 $('#botonLetra').click(function() {
+  letraIngresada = $('#letraIngresada').val();
   for (let i = 0; i < palabraJuego.length; i++) {
     if (letraIngresada == palabraJuego[i]) {
       guiones[i] = palabraJuego[i].replace("_", `${letraIngresada}`)
     }
     $('.reto').html(`<div class 'guiones'>${guiones.join(' ')}</div>`)
   }
-
-  $('.reto').html(`<div class 'guiones'>${guiones.join(' ')}</div>`);
   errorLetra(letraIngresada)
   finalizarJuego()
+
+
+  let valorIngresado = $('intento');
+  let imagen = $('.premio');
+
+  const url = `https://rickandmortyapi.com/api/character`;
+
+      fetch(`${url}/${intento}`)
+          .then(res => {
+            return res.json();
+          })
+          .then(data => {
+            if (palabraJuego.includes(letraIngresada)) {
+              data.id = intento;
+              imagen.append(`  <div class="premio1">
+                                <p>${data.name}</p>
+                                <img src="${data.image}">
+                                <p>${data.gender}</p></div>`)
+            }
+          })
+          .catch(err => {console.log(err);})
   });
 })

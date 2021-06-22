@@ -233,3 +233,25 @@
   height: 200px;
 
 }
+.contenedor-premio{
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  top: -50px;
+  margin-left: 20px;
+}
+.premio{
+  display: flex;
+  flex-direction: row;
+}
+.premio1 p{
+  font-size: .6rem;
+  background-color: rgba(58, 244, 155, .6);
+  padding: 0;
+  margin: 0;
+  width: 60px;
+}
+.premio img{
+  width: 60px;
+  height: 50px;
+}
