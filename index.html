@@ -1,74 +1,196 @@
 <!doctype html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
-  <metna name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Proyecto inicial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,900;1,500;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;1,500&display=swap" rel="stylesheet">
-    <title>Proyecto inicial</title>
-
 </head>
 
 <body>
-
-  <header class="d-flex justify-content-around">
-    <ul class="menu navbar navbar-expand-sm bg-light navbar-light d-flex justify-content-around col-12 ">
-
-      <li> <a href="./index.html">SUMA</a> </li>
-      <li> <a href="./resta.html">RESTA</a> </li>
-      <li class="logo"></li>
-      <li> <a href="./dictado.html">DICTADO</a></li>
-      <li> <a href="./ahorcado.html">AHORCADO</a></li>
+  <div class="contenedor_menu">
+    <ul class="menu navbar">
+      <li><a href="#container_suma">SUMA</a></li>
+      <li><a href="#container_resta">RESTA</a> </li>
+      <li><a href="#container_dictado">DICTADO</a></li>
+      <li><a href="#container_ahorcado">AHORCADO</a></li>
     </ul>
+  </div>
+  <header>
+    <div class="contenedor_banner">
+      <div class="img_fondo">
+        <img src="./img/astronauta1.png" class="astro1" alt="astronauta1">
+        <div class="titulo-cap">
+          <h1 class="titulo">BRAIN-GAMES</h1>
+        </div>
+      </div>
+    </div>
   </header>
+  <div class="container_suma" id="container_suma">
 
-  <section class="time">
-    <h3 class="dias">Días</h3>
-    <h3 class="horas">Horas</h3>
-    <h3 class="minutos">Minutos</h3>
-    <h3 class="segundos">Segundos</h3>
-  </section>
+    <div class="containter_left">
+      <h1>SUMA</h1>
+      <div class="imagen_left">
+        <img src="../img/left1.svg" alt="left1">
+      </div>
+      <div class="act_boton">
+        <form class="opciones" name="opciones">
+          <label for="turnos" id="turnos_suma">¿Cuántos turnos deseas jugar?
+          <input type="number" id="turno_suma">
+          </label>
+          <label for="dificultad" id="dificultad_suma">Escoge el nivel de dificultad:<br>
+          <input type="radio" name="dificultad" value="Facil" id="suma_facil">  Sin Tiempo
+          <input type="radio" name="dificultad" value="Dificil" id="suma_dificil">  Con Tiempo
+          </label>
+          <button type="button" id="comenzar">Comenzar</button>
+        </form>
+      </div>
+      <div class="boton-inicio">
+        <button class="btn btn-success iniciar" type="submit">INICIAR JUEGO</button>
+      </div>
+    </div>
 
-  <div class="juego">
-      <div class="seccion1">
-        <div class="numeros">
-            <p class="num1"></p>
-            <p class="operacion">+</p>
-            <p class="mensaje"></p>
-            <p class="num2"></p>
-            <p class="resultado">=</p>
-            <input  id="resultado1" type="number" value="0" placeholder="0" required>
-            <div id="countDownGame"></div>
-        </div>
+    <div class="containter_rigth container_after">
+      <div class="puntaje_suma">
+        <p class="puntos_suma">Puntaje:</p>
+        <p class="intento_suma">Intento:</p>
+      </div>
+      <div id="countDownGame"></div>
+      <div class="operacion">
+        <p class="num1"></p>
+        <p class="operacion_suma">+</p>
+        <p class="mensaje"></p>
+        <p class="num2"></p>
+        <p class="resultado">=</p>
+        <input id="resultado_suma" type="number" value="0" placeholder="0" required>
+      </div>
+      <div class="botones">
+        <button class="btn btn-success" id="comprobar" type="submit">COMPROBAR</button>
+        <button class="btn btn-secondary" id="siguiente" type="submit">SIGUIENTE</button>
+      </div>
+      <div class="intentos">
+        <p class="lastpuntaje_suma">Puntaje Anterior:</p>
+        <p class="lastintento_suma">Intento Anterior:</p>
+      </div>
+    </div>
+  </div>
 
-      <div class="botones-general">
-        <div class="botones">
-            <button class="btn btn-success" id="comprobar" type="submit">COMPROBAR</button>
-            <button class="btn btn-secondary" id="siguiente" type="submit">SIGUIENTE</button>
+  <div class="container_resta" id="container_resta">
+    <div class="containter_left">
+      <h1>RESTA</h1>
+      <div class="imagen_left">
+        <img src="../img/left2.svg" alt="left1">
+      </div>
+      <div class="act_boton">
+        <form class="opciones_resta" name="opciones_resta">
+          <label for="turnos" id="turnos_resta">¿Cuántos turnos deseas jugar?
+          <input type="number" id="turno_resta">
+          </label>
+          <label for="dificultad" id="dificultad_resta">Escoge el nivel de dificultad:<br>
+          <input type="radio" name="dificultad" value="Facil" id="resta_facil">  Sin Tiempo
+          <input type="radio" name="dificultad" value="Dificil" id="resta_dificil">  Con Tiempo
+          </label>
+          <button type="button" id="comenzar">Comenzar</button>
+        </form>
+      </div>
+      <div class="boton-inicio">
+        <button class="btn btn-success iniciar"  type="submit">INICIAR JUEGO</button>
+      </div>
+    </div>
+
+    <div class="containter_rigth container_after">
+      <div class="puntaje">
+        <p class="puntos">Puntaje:</p>
+        <p class="intento">Intento:</p>
+      </div>
+      <div id="countDownGame"></div>
+      <div class="operacion">
+        <p class="num1"></p>
+        <p class="operacion_resta">-</p>
+        <p class="mensaje"></p>
+        <p class="num2"></p>
+        <p class="resultado">=</p>
+        <input id="resultado_resta" type="number" value="0" placeholder="0" required>
+      </div>
+      <div class="botones">
+        <button class="btn btn-success" id="comprobar" type="submit">COMPROBAR</button>
+        <button class="btn btn-secondary" id="siguiente" type="submit">SIGUIENTE</button>
+      </div>
+      <div class="intentos">
+        <p class="lastpuntaje_suma">Puntaje Anterior:</p>
+        <p class="lastintento_suma">Intento Anterior:</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container_dictado" id="container_dictado">
+    <div class="containter_left">
+      <h1>DICTADO</h1>
+      <button class="btn btn-success"  type="submit">COMPROBAR</button>
+      <button class="btn btn-secondary"  type="submit">SIGUIENTE</button>
+    </div>
+    <div class="containter_rigth">
+      <input type="text" id="texto_dictado" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="Tu palabra es">
+      <button id="leer_dictado" class="btn btn-danger" type="button" name="button">Escuchar</button>
+      <button type="button" class="btn btn-primary" id="comprobar_dictado" name="button">Comprobar</button>
+      <button type="button" class="btn btn-warning" id="siguiente_dictado" name="button">Siguiente</button>
+      <p class="puntaje_dictado">Puntaje:</p>
+      <p class="intento">Intento:</p>
+      <p class="lastpuntaje">Puntaje Anterior:</p>
+      <p class="lastintento">Intento Anterior:</p>
+    </div>
+  </div>
+
+  <div class="container_ahorcado" id="container_ahorcado">
+    <div class="containter_left">
+      <h1>AHORCADO</h1>
+      <button class="btn btn-success"  type="submit">COMPROBAR</button>
+      <button class="btn btn-secondary"  type="submit">SIGUIENTE</button>
+    </div>
+
+    <div class="containter_rigth">
+      <form id="radio_box">
+        <input type="radio" id="facil" name="dificultad" value="1">
+        <label for="facil">Fácil</label>
+        <input type="radio" id="medio" name="dificultad" value="2">
+        <label for="facil">Medio</label>
+        <input type="radio" id="dificil" name="dificultad" value="3">
+        <label for="facil">Difícil</label>
+        <input type="radio" id="ultra" name="dificultad" value="4">
+        <label for="facil">Ultra Difícil</label>
+      </form>
+
+      <input type="text" id="letraIngresada" name="letraIngresada" maxlength="1" pattern="[A-Z]{1}" onkeyup="javascript:this.value=this.value.toUpperCase()" required>
+      <button id="botonLetra" class="btn btn-warning" type="button" name="letraIngresada">Letra</button>
+      <p class="intentosTotales">Intentos: </p>
+      <p class="intentosErroneos">Intentos Erroneos: </p>
+      <p class="intentosAcertados">Intentos Acertados: </p>
+
+      <div class="juego_ahorcado">
+        <div class="reto">
         </div>
       </div>
+      <div class="letrasUsadas d-flex">
+        <p class="letras">Letras Usadas: </p>
       </div>
-      <div class="info">
-        <div class="info-turno">
-            <p class="puntaje">Puntaje:</p>
-            <p class="intento">Intento:</p>
-        </div>
-        <div class="last-turno">
-          <p class="lastpuntaje">Puntaje Anterior:</p>
-          <p class="lastintento">Intento Anterior:</p>
-
-        </div>
+      <div class="imagen-ahorcado d-inline-flex">
+        <img src="./img/base.png" id="img_juego" alt="">
       </div>
+    </div>
   </div>
 
   <footer class="footer-2">
     COPYRIGHT 2021 FIDEL PARABACUTO
   </footer>
-
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-</body>
   <script src="./js/script.js"></script>
+  <script src="./js/script3.js"></script>
+</body>
+
 
 </html>

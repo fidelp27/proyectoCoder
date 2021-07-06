@@ -1,30 +1,83 @@
+//--------------------------header Parallax-----------------///
+jQuery(document).ready(function($) {
+  $('.astro1').hide();
+  $('.titulo-cap h1').hide()
 
+  $(window).scroll(function() {
+    console.log(window.scrollY);
+    const scroll = $(window).scrollTop();
+    const scrollY = $(window).scrollY;
+
+    $('.astro1').show();
+    $('.titulo-cap h1').show()
+    if (scroll <= 70) {
+      $('.astro1').css({
+        width: scroll*5+'px',
+        height: scroll*5 +'px',
+      })
+      $('.titulo-cap h1').css({
+        height: scroll*2 +'px',
+        fontSize: scroll*0.07 +'rem',
+      });
+    }
+});
+});
 //--------------------------Variables-------------------------------//
 let num1;
 let num2;
 let resultadoSuma;
 let resultadoResta;
 let puntaje = [];
-let contador = [];
+let contador_suma = [];
+let contador_resta = [];
 let bg;
 let sumContador;
 let sumaPuntos;
 let mensaje = document.querySelector('.mensaje');
-let resultadoIngresado;
-let operacion = document.querySelector('.operacion').innerHTML;
+let resultadoIngresado1;
+let resultadoIngresado2;
+let operacion_suma = document.querySelector('.operacion_suma').innerHTML;
+let operacion_resta = document.querySelector('.operacion_resta').innerHTML;
 let countDownGame = 20;
 let intervalo;
-let Item = document.querySelector(".juego");
-let prueba;
 mensaje.style.display = "none"
-
-//---------------------------------------------------------------------//
-
-crearOperacion();
-intentos();
-obtenerLocalStorage()
-
+let facil = document.getElementById('suma_facil');
+let dificil = document.getElementById('suma_dificil');
+let boton_inicio = document.querySelector('#comenzar');
+let boton_iniciar = document.querySelector('.iniciar')
+let turnos_suma = document.querySelector('#turno_suma');
+let aciertos = [];
+let sumaAciertos;
+let container_derecho = document.querySelector('.containter_rigth')
+console.log(container_derecho);
+let opciones = document.querySelector('.opciones');
 //----------------------------Funciones---------------------------------//
+boton_inicio.addEventListener('click', crearJuego)
+boton_iniciar.addEventListener('click', mostrar)
+function crearJuego(){
+
+  if (facil.checked) {
+    crearOperacion();
+    intentos();
+    obtenerLocalStorage()
+  }else if (dificil.checked) {
+    crearOperacion();
+    cuentaRegresiva();
+    intentos();
+    obtenerLocalStorage();
+  }else {
+    alert("Debes seleccionar una opción");
+    recargarPagina()
+  }
+  opciones.style.display = "none";
+  container_derecho.classList.remove('containter_rigth')
+}
+
+
+function mostrar(){
+  opciones.classList.toggle('ocultar');
+}
+
 function crearOperacion() {
   let operador = [];
   operador[0] = parseInt((Math.random() * (15-10)) + 10);
@@ -35,49 +88,56 @@ function crearOperacion() {
   document.querySelector('.num2').innerHTML = operador[1];
   resultadoSuma = parseInt(operador[0] + operador[1]);
   resultadoResta = parseInt(operador[0] - operador[1]);
-  contador.push(1);
-  // countDownGame= 20;
-  cuentaRegresiva()
+  contador_suma.push(1);
 }
 
 function scoring() {
   sumaPuntos = puntaje.reduce((a, b) => {
     return a + b;
   }, 0)
-
-  document.querySelector('.puntaje').innerHTML = "Puntaje: " + sumaPuntos;
+  document.querySelector('.puntos_suma').innerHTML = "Puntaje: " + sumaPuntos;
   console.log("sumaPuntos = " + sumaPuntos);
 }
+function correctas(){
+  sumaAciertos = aciertos.reduce((a, b)=> {
+    return a + b;
+  }, 0)
+}
 
-function comprobarResultado() {
-
-
-  resultadoIngresado = Number(document.getElementById('resultado1').value);
-  if (operacion == "+" && resultadoSuma == resultadoIngresado) {
+function comprobarResultadoSuma() {
+  resultadoIngresado1 = parseInt(document.getElementById('resultado_suma').value);
+  if (operacion_suma == "+" && resultadoSuma == resultadoIngresado1) {
     puntaje.push(5);
-    console.log(puntaje);
-    funWhite();
-  }
-  else if (operacion == "-" && resultadoResta == resultadoIngresado) {
-    puntaje.push(5);
-    console.log(puntaje);
-    funWhite();
+    aciertos.push(1);
+    alert("Correcto");
   }else{
     puntaje.push(-3);
     console.log(puntaje);
-    funRed();
+    alert("Incorrecto")
   }
 }
-
+let intento_suma = document.querySelector('.intento_suma')
 function intentos() {
-  sumContador = contador.reduce((a, b) => {
+  sumContador = contador_suma.reduce((a, b) => {
     return a + b;
   }, 0)
-  document.querySelector('.intento').innerHTML = "Turno: " + sumContador;
+  intento_suma.innerHTML = "Turno: " + sumContador;
 }
 
 function limpiarValor() {
-  document.getElementById("resultado1").value = "";
+  document.getElementById("resultado_suma").value = "";
+}
+
+function juegoTerminado(){
+  if (turno_suma.value < sumContador) {
+    alert(`terminaste el juego. Acertaste: ${sumaAciertos} de un total de ${turno_suma.value}`);
+
+    recargarPagina()
+  }
+}
+
+function recargarPagina(){
+  window.location.reload(true);
 }
 
 //------------------------Boton Siguiente---------------------------//
@@ -86,20 +146,24 @@ botonSiguiente.addEventListener("click", function() {
   crearOperacion();
   intentos();
   guardarLocalStorage();
-  clearTime();
+  // clearTime();
   limpiarValor();
   countDownGame = 20;
   scoring();
+  juegoTerminado();
+  console.log(sumContador);
 })
 
 //-------------------Boton Comprobar ---------------------------------//
 let botonComprobar = document.querySelector('#comprobar');
 
 botonComprobar.addEventListener("click", function() {
-  comprobarResultado();
+  comprobarResultadoSuma();
   scoring();
   guardarLocalStorage();
   detenerTiempo();
+  correctas();
+
 })
 //-------------------Local Storage-----------------------------------------//
 function guardarLocalStorage() {
@@ -108,78 +172,12 @@ function guardarLocalStorage() {
 }
 
 function obtenerLocalStorage() {
-  let puntaje1 = localStorage.getItem('puntuacion');
-  document.querySelector('.lastpuntaje').innerHTML = "Último puntaje: " + puntaje1;
-  let intentos1 = localStorage.getItem('Intentos');
-  document.querySelector('.lastintento').innerHTML = "Últimos Intentos: " + intentos1;
-}
-//-------------------Cuenta regresiva------------------------------------//
-
-let dias;
-let horas;
-let minutos;
-let segundos;
-let countDownDate;
-let diferencia;
-let now;
-
-countDownDate = new Date("Jul 13, 2021 23:59:59").getTime();
-
-let tiempo = setInterval(function() {
-  now = new Date().getTime();
-  diferencia = countDownDate - now;
-  dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-  horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
-  segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
-
-  document.querySelector('.dias').innerHTML = "Entrega en " + dias + " días";
-  document.querySelector('.horas').innerHTML = "Horas " + horas;
-  document.querySelector('.minutos').innerHTML = "Minutos " + minutos;
-  document.querySelector('.segundos').innerHTML = "Segundos " + segundos;
-
-  if (diferencia <= 0) {
-    clearInterval(tiempo);
-    let time = document.querySelector('.time');
-    time.innerHTML = "Bienvenido al juego"
-  }
-}, 1000);
-//---------------------------------fondo parpadeante ------------------------------//
-
-
-function clearTime() {
-  Item.style.backgroundColor = "white";
-  mensaje.style.display = "none"
-  clearTimeout(prueba)
+  let puntaje_suma = localStorage.getItem('puntuacion');
+  document.querySelector('.lastpuntaje_suma').innerHTML = "Último puntaje: " + puntaje_suma;
+  let intentos_suma = localStorage.getItem('Intentos');
+  document.querySelector('.lastintento_suma').innerHTML = "Últimos Intentos: " + intentos_suma;
 }
 
-function funRed() {
-  Item.style.backgroundColor = "red";
-  mensaje.innerHTML = "Incorrecto"
-  mensaje.style.display = "flex"
-  prueba = setTimeout(funWhite2, 400);
-}
-
-function funGreen() {
-  Item.style.backgroundColor = "green";
-  mensaje.innerHTML = "Correcto";
-  mensaje.style.display = "flex"
-  prueba = setTimeout(funWhite, 400);
-}
-
-function funWhite() {
-  Item.style.backgroundColor = "white";
-  mensaje.innerHTML = "";
-  mensaje.style.display = "flex"
-  prueba = setTimeout(funGreen, 400);
-}
-
-function funWhite2() {
-  Item.style.backgroundColor = "white";
-  mensaje.innerHTML = "";
-  mensaje.style.display = "flex"
-  prueba = setTimeout(funRed, 400);
-}
 //-------------------------contador segundos---------------------//
 
 function cuentaRegresiva(){
@@ -187,16 +185,11 @@ function cuentaRegresiva(){
   scoring();
   document.getElementById('countDownGame').innerHTML = countDownGame;
   if (countDownGame == 0) {
-
-    funRed();
     intentos();
     puntaje.push(-3);
-  
-
   }else {
     --countDownGame;
     intervalo = setTimeout("cuentaRegresiva()", 1000);
-
   }
 }
 

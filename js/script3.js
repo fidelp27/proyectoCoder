@@ -4,11 +4,11 @@ jQuery(document).ready(function($) {
   let palabraJuego;
   let guiones = [];
   let letraUsada =[];
-  let arrayMono = ["mar","par","sol","rie","dos","tres"];
-  let arrayBis = ["cama", "mono", "cobre", "luna", "pala", "pila", "yoga", "viento", "cuatro", "diez", "doce"];
-  let arrayTri = ["Caracas", "pelota", "caracol","pilates", "nevera", "cocina"];
-  let arrayPoli = ["administracion", "programacion", "computacion", "precipitacion", "paralelogramo", "paralelepipedo", "hexagono"]
-  let imagenes = ["./img/base1.png","./img/base2.png","./img/base3.png","./img/base4.png","./img/base5.png","./img/base6.png","./img/base7.png"]
+  let arrayMono = ["mar","par","sol","rie","dos","tres", "uno", "paz", "pez", "hoy", "cruz", "mal", "mes", "fax", "pie", "gris", "zen", "tos", "bar"];
+  let arrayBis = ["cama", "mono", "cobre", "luna", "pala", "pila", "yoga", "viento", "cuatro", "diez", "doce", "alto", "amor", "baile", "bosque", "collar", "letal", "mortal", "veraz", "zanja", "verdad", "tomar", "tiempo", "rumor", "renta"];
+  let arrayTri = ["Caracas", "pelota", "caracol","pilates", "nevera", "cocina", "aceptar", "asunto", "camino", "canela", "capataz", "corneta", "ejemplo", "efecto", "historia", "humano", "ultramar", "tomate", "sistema", "respeto", "picante"];
+  let arrayPoli = ["administracion", "programacion", "computacion", "precipitacion", "paralelogramo", "paralelepipedo", "hexagono", "monasterio", "jabalina", "herramienta", "tranquilidad", "extranjero", "monasterio", "mantequilla", "archivador", "mandamiento", "capacidad"]
+  let imagenes = ["","./img/base1.png","./img/base2.png","./img/base3.png","./img/base4.png","./img/base5.png","./img/base6.png","./img/base7.png"]
   let contador = 0;
   let intento = 0;
   let intentoErroneo=0;
@@ -51,6 +51,12 @@ function crearPalabra(arr){
   for (let palabra of palabraJuego) {
     guiones.push('_');
   }
+  $('#radio_box').hide('10000');
+}
+
+let numAzar;
+function numeroAzar(){
+  numAzar = parseInt(Math.random()*50)+1
 }
 
 
@@ -60,73 +66,94 @@ function mostrarPalabra(){
 
 function errorLetra(letraIngresada){
   letraIngresada = $('#letraIngresada').val();
-  if (letraUsada.includes(letraIngresada)) {
-    alert(`Ya usaste la letra ${letraIngresada}`);
+  if(validarCampo() == false){
+    alert("Debes ingresar una letra");
   }
-  else if (!palabraJuego.includes(letraIngresada)) {
-    $('#img_juego').attr('src', `${imagenes[intentoErroneo]}`);
-    ++intentoErroneo;
+  else if (letraUsada.includes(letraIngresada)) {
+    alert(`Ya usaste la letra ${letraIngresada}`);
+  }else if (!palabraJuego.includes(letraIngresada)) {
+    intentoErroneo = intentoErroneo + 1;
+    $('.intentosErroneos').html(`<p class="intentosErroneos">Intentos Erróneos: ${intentoErroneo}</p>`);
     ++intento;
+    $('.intentosTotales').html(`<p class="intentosTotales">Intentos: ${intento}</p>`);
     letraUsada.push(letraIngresada);
     $('.letrasUsadas').append(`<p class="usadas"> - ${letraIngresada} </p>`);
-    $('.intentosTotales').html(`<p class="intentosTotales">Intentos: ${intento}</p>`);
-    $('.intentosErroneos').html(`<p class="intentosErroneos">Intentos Erróneos: ${intentoErroneo}</p>`);
+    $('#img_juego').attr('src', `${imagenes[intentoErroneo]}`);
   }else {
     ++intentoAcertado;
-    ++intento;
     $('.intentosAcertados').html(`<p class="intentosAcertados">Intentos Acertados: ${intentoAcertado}</p>`)
+    ++intento;
     $('.letrasUsadas').append(`<p class="usadas"> - ${letraIngresada} </p>`);
     letraUsada.push(letraIngresada);
   }
+
 }
-
 //-----------------------Finalizar juego------------------//
-
 function finalizarJuego(){
     if (!guiones.includes('_')==true) {
       alert("ganaste");
-      setTimeout(recargarPagina(), 3000);
-    }else if (intentoErroneo >= 7) {
+      recargarPagina();
+    }else if (intentoErroneo == 7) {
       alert(`perdiste, la palabra era: ${palabraAleatoria}`);
-      setTimeout(recargarPagina(), 5000);
+      recargarPagina();
     }
 }
+//------------------ Varios------------------------------//
 function recargarPagina(){
   window.location.reload(true);
 }
 
+function formatoInput(){
+  $('#letraIngresada').trigger('focus');
+  $('#letraIngresada').val("")
+}
+//------------------------------Validar input------------------------//
 
-//----------------Comprobar-------------------------//
-$('#botonLetra').click(function() {
+function validarCampo(){
   letraIngresada = $('#letraIngresada').val();
-  for (let i = 0; i < palabraJuego.length; i++) {
-    if (letraIngresada == palabraJuego[i]) {
-      guiones[i] = palabraJuego[i].replace("_", `${letraIngresada}`)
-    }
-    $('.reto').html(`<div class 'guiones'>${guiones.join(' ')}</div>`)
+  let pattern = new RegExp('^[A-ZÑ]+$');
+  if (!pattern.test(letraIngresada) || !letraIngresada || letraIngresada == "") {
+    return false;
   }
-  errorLetra(letraIngresada)
-  finalizarJuego()
+}
+//----------------Comprobar-------------------------//
 
+  $('#botonLetra').click(function() {
+    letraIngresada = $('#letraIngresada').val();
 
-  let valorIngresado = $('intento');
-  let imagen = $('.premio');
+    for (let i = 0; i < palabraJuego.length; i++) {
+      if (letraIngresada == palabraJuego[i]) {
+        guiones[i] = palabraJuego[i].replace("_", `${letraIngresada}`)
+      }
+      $('.reto').html(`<div class 'guiones'>${guiones.join(' ')}</div>`)
+    }
+    errorLetra(letraIngresada)
+    numeroAzar()
+    formatoInput()
+    setTimeout(finalizarJuego, 1000)
 
-  const url = `https://rickandmortyapi.com/api/character`;
+  // let valorIngresado = $('intento');
+  // let imagen = $('.premio');
+  //
+  // const url = `https://rickandmortyapi.com/api/character`;
+  //
+  //     fetch(`${url}/${numAzar}`)
+  //         .then(res => {
+  //           return res.json();
+  //         })
+  //         .then(data => {
+  //           if (letraUsada.includes(letraIngresada)) {
+  //             continue;
+  //           }
+  //           else if (palabraJuego.includes(letraIngresada)) {
+  //             data.id = intento;
+  //             imagen.append(`<div class="premio1">
+  //                               <p>${data.name}</p>
+  //                               <img src="${data.image}">
+  //                               <p>${data.gender}</p></div>`)
+  //           }
+  //         })
+  //         .catch(err => {console.log(err)})
+   });
 
-      fetch(`${url}/${intento}`)
-          .then(res => {
-            return res.json();
-          })
-          .then(data => {
-            if (palabraJuego.includes(letraIngresada)) {
-              data.id = intento;
-              imagen.append(`  <div class="premio1">
-                                <p>${data.name}</p>
-                                <img src="${data.image}">
-                                <p>${data.gender}</p></div>`)
-            }
-          })
-          .catch(err => {console.log(err);})
-  });
 })

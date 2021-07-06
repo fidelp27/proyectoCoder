@@ -1,257 +1,328 @@
+    *{
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+      scroll-behavior: smooth;
+
+    }
     input[type=number]::-webkit-inner-spin-button,
     input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
+      -webkit-appearance: none;
+      margin: 0;
+    }
 
-  body{
-    font-family: Rubik sans-serif;
-  }
 
-  header ul{
-    background-image: url("../img/fondo-header.jpg"); /* The image used */
-    height: 45vh; /* You must set a specified height */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Do not repeat the image */
-    background-size: cover;   /* Resize the background image to cover the entire container */
-    margin: 0 auto;
-    padding: 0;
-  }
-  header ul li{
-    background-color: rgb(245, 244, 244, .8);
-    padding: 1.4rem;
-    border-radius: .3rem;
-    font-size: 1.5rem;
-    font-style: Rubik;
-    list-style: none;
-    width: 12%;
-    text-align: center;
-    font-weight: bold;
+    body {
+      background-color: rgba(236, 232, 232, 0.52);
+    }
+    .contenedor_menu{
+      height: 10vh;
+      width: 100%;
+      background-color: rgba(236, 232, 232, 0.52);
+    }
+    .contenedor_menu .menu{
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      list-style: none;
+      background-color: rgba(4, 4, 4, 0.91);
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
 
-  }
-  header ul li:last-child{
-    margin-right: 0;
-    text-align: center;
+    .menu a{
+      text-decoration: none;
+      color: #ffffff;
+      letter-spacing: .3rem;
+      transition: 1s ease;
+    }
+    .menu a:hover{
+      text-decoration: none;
+      color: #e4e0e0;
+      letter-spacing: .6rem;
+      transition: 0.5s ease-out;
+      background-color: rgba(4, 4, 4, 0.6);
+      padding: 1.5rem;
+      font-weight: 500;
+    }
 
-  }
-  ul li:hover{
-      background-color: rgb(245, 244, 244, .3);
-  }
-  a{
-    text-decoration: none;
-    color: #fb6107;
+    header{
+      height: 100vh;
+      width: 100%;
+    }
+    .contenedor_menu{
+      width: 100%;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      padding: 0;
+      margin: 0;
+    }
 
-  }
-  .btn-success{
-    background-color: #fb6107;
-  }
-  .btn-secondary{
-    background-color: #5c8001;
-  }
-  .logo{
-    width: 10rem;
-    height: 10rem;
-    background-image: url('../img/logo.png');
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Do not repeat the image */
-    background-size: cover; /* Resize the background image to cover the entire container */
-    background-color: rgba(0, 0 ,12 , .4);
-    border: solid black;
-    border-radius: 10rem;
-  }
-  .logo:hover{
-    width: 10rem;
-    height: 10rem;
-    background-image: url('../img/logo1.png');
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Do not repeat the image */
-    background-size: cover; /* Resize the background image to cover the entire container */
-    background-color: rgba(12, 12 ,12 , .4);
-    border: solid black;
-    border-radius: 10rem;
-    border-radius: 10rem;
-    border: solid #D4AF37;
+    .contenedor_banner {
+      position: relative;
+      background-image: url('../img/img_parallax.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 95vh;
+      width: 100%;
+      display: block;
+      justify-content: center;
+      align-items: flex-end;
+      margin: 0;
+      padding: 0;
+    }
 
-  }
-  .juego{
-    display: block;
-    margin: 0;
-    padding: 0;
-    height: 38vh;
-    width: 100%;
+    .img_fondo h1 {
+      font-size: 4rem;
+      font-weight: bold;
+      font-family: 'Press Start 2P', cursive;
+      color: rgba(158, 152, 152, 0.7);
+      letter-spacing: .7rem;
+    }
 
-  }
-  .seccion1{
+    img {
+      position: absolute;
+    }
+
+    .astro1 {
+      right: 20%;
+      bottom: 20%;
+    }
+
+    .titulo-cap {
+      position: absolute;
+      width: 100%;
+      bottom: 50%;
+      text-align: center;
+    }
+  .container_suma,
+  .container_resta,
+  .container_dictado,
+  .container_ahorcado {
+    height: 100vh;
+    width: 95%;
+    position: sticky;
+    top: 4rem;
     display: flex;
-    padding: 1rem;
     margin: 0 auto;
-    width: 100%;
-  }
-  .juego_dictado{
-    display: block;
-    margin: 0;
-    padding: 0;
-    height: 38vh;
-    width: 100%;
-  }
-  .seccion_dictado{
-    display: flex;
-    flex-direction: row;
-    padding: 1rem;
-    margin: 0 auto;
-    width: 100%;
-  }
-  #resultado1{
-    border: none;
-    width: 7rem;
-    font-size: 2rem;
-    background-color: transparent;
-  }
-  #resultado1:focus {
-  outline: none;
 
-}
-  .mensaje{
-    font-size: 6rem;
-    letter-spacing: 3rem;
+  }
+  .containter_left{
+    width: 50%;
+    color: #ffff;
+    border-top-left-radius: .7rem;
+    box-shadow: inset 0 0 .3rem 0 rgba(115, 115, 115, 0.68);
+
+  }
+  .containter_left h1{
+    font-family: 'Roboto', sans-serif;
     font-weight: bold;
-    color: white;
-    text-align: center;
-    border: solid white;
+    font-size: 10rem;
+    letter-spacing: .5rem;
+  }
+  .act_boton{
+    width: 50%;
+    display: flex;
+    margin: 0 auto;
+  }
+
+  .imagen_left{
     position: absolute;
-    background-color: transparent;
-    margin: 0 auto;
+    width: 50%;
+    display: flex;
+    justify-content: center;
   }
-  #a{
-    background-color: red;
+  .imagen_left img{
+    width: 250px;
+    height: 350px;
   }
 
-  }
-  .info-turno, .last-turno{
-    font-size: .8rem;
+  .container_dictado .containter_left h1{
     font-weight: bold;
-    text-decoration: underline;
+    font-size: 8rem;
+    letter-spacing: .5rem;
   }
-  .time{
-    display: flex;
-    justify-content: space-around;
-    background-color: rgba(153, 255, 0, .7);
-    margin: 0 auto;
-    padding: 1.1rem 0;
+  .container_ahorcado .containter_left h1{
+    font-weight: bold;
+    font-size: 7rem;
+    letter-spacing: .5rem;
   }
-  .numeros{
-    font-size: 2rem;
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    align-items: center;
+  .container_after,
+  .containter_rigth{
+    width: 50%;
+    border-top-right-radius: .7rem;
+    box-shadow: inset 0 0 .3rem 0 rgba(115, 115, 115, 0.68);
+    color: #ffff;
+    transition: .5s ease-out;
+  }
+  .container_suma .containter_left{
+    background-color:#002234;
 
   }
-  .numeros .num1, .num2, #resultado1{
-    border: solid black;
-    border-radius: 10rem;
-    padding: 3rem;
-    margin: 0 .5rem auto;
-    font-size: 2rem;
-    width: 10rem;
+  .opciones,
+  .opciones_resta{
+    display: block;
+    justify-content: center;
+    opacity: 0;
+    position: absolute;
     text-align: center;
+    width: 300px;
+    height: 250px;
+    padding: 1rem;
+    border: 1px solid #CCC;
+    border-radius: 1rem;
+    background-color: rgba(110, 110, 110, 0.86);
+    transition: .5s ease-out;
+    z-index: 1;
   }
-  .operacion, .resultado{
-    font-size: 5rem;
+  .ocultar{
+    display: block;
+    justify-content: center;
+    opacity: 1;
   }
-  p{
-    text-align: center;
+  .opciones #turno_suma,
+  .opciones #turno_resta{
+    margin: 1rem auto;
   }
-  .botones-general{
-    display: flex;
-    flex-direction: column;
-  }
-
-
-  #comprobar_dictado, #siguiente_dictado{
-    width: 30%;
-    padding: .5rem;
-    margin: 0 auto;
-  }
-  #leer_dictado {
-    width: 30%;
-    height: auto;
-    padding: 0;
-    margin-left: 0.2rem;
-
-  }
-  #texto_dictado{
-    width: 100%;
-    height: auto;
-    padding: 0;
-    margin: 0 auto;
-
-  }
-  #comprobar, #siguiente, #leer{
-    width: 100%;
-    height: 50%;
+  .opciones #dificultad_suma,
+  .opciones #dificultad_resta{
+    display: block;
+    justify-content: center;
+    line-height: 1.5;
     padding: .5rem;
     margin: .5rem auto;
   }
-
-
-  .info{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+  .opciones #comenzar{
+    width: 8rem;
+    padding: .3rem;
+    margin: 0 auto;
+    border-radius: .4rem;
+    background-color: rgba(194, 136, 26, 0.9);
+  }
+  label{
+    letter-spacing: .1rem;
+  }
+  label #dificultad_suma,
+  label #dificultad_resta{
+    padding: .3rem;
+  }
+  label #turno_suma,
+  label #turno_resta{
+    width: 4rem;
     padding: 1rem;
-    margin: 0 auto;
+    border-radius: 4rem;
+    text-align: center;
+    background-color: rgb(194, 136, 26);
+    color: #fff;
+    outline: none;
+    border: none;
   }
-  .botoneseinfo{
+  .boton-inicio{
+    position: absolute;
     display: flex;
-    padding: .1rem;
-    margin: 0 auto;
+    width: 50%;
+    height: 55%;
+    justify-content: flex-end;
+    align-items: flex-end;
   }
-  .info_dictado{
-    display: flex;
-    justify-content: space-around;
-    padding: .5rem;
-    margin: 0 1rem auto;
+  .container_suma .container_after, .container_suma .containter_rigth{
+    background-color: #0c2430;
+    display: block;
   }
-  footer{
-    position: fixed;
+  .container_suma .containter_rigth::after{
+    content: "";
+    background-image: url("../img/suma_.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    background-color: rgba(123, 223, 334, 0.4);
+    top: 0;
+    right: 0;
+    left: 50;
     bottom: 0;
-    width: 100%;
-    color: black;
-    background-color: rgba(153, 255, 0, .7);
+  }
+
+  .container_suma .container_after .puntaje_suma,
+  .container_suma .containter_rigth .puntaje_suma{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(228, 228, 228, 0.81);
     padding: .7rem;
+    letter-spacing: .5rem;
+  }
+  .container_suma .container_after #countDownGame,
+  .container_suma .containter_rigth #countDownGame{
+    background-color: rgba(190, 190, 190, 0.56);
+    padding: .5rem;
     text-align: center;
   }
-.juegoGeneral{
+  .container_suma .container_after .intentos,
+  .container_suma .containter_rigth .intentos{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(228, 228, 228, 0.81);
+    padding: .5rem;
+    letter-spacing: .2rem;
+  }
+  .container_suma .container_after .operacion,
+  .container_suma .containter_rigth .operacion{
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 1rem auto;
+    text-align: center;
+    letter-spacing: .5rem
+  }
+  .container_suma #resultado_suma, #resultado_resta{
+    background-color: #0c2430;
+    width: 6rem;
+    color: #fff;
+    text-align: center;
+    box-shadow: 0 0 .3rem 0 rgba(115, 115, 115, 0.68);
+    border: none;
+    outline: none;
+  }
+  .container_suma .botones{
+    margin: .5rem;
+    display: flex;
     justify-content: space-around;
-    position: relative;
-}
+  }
 
-.imagen-ahorcado{
+  .container_resta .containter_left{
+    background-color: #4f2869;
+  }
+  .container_resta .containter_rigth{
+    background-color: #5f3a78;
+  }
+  .container_dictado .containter_left{
+    background-color: #f48c06;
+  }
+  .container_dictado .containter_rigth{
+    background-color: #faa307;
+  }
+  .container_ahorcado .containter_left{
+    background-color: #d00000;
+  }
+  .container_ahorcado .containter_rigth{
+    background-color: #dc2f02;
+  }
 
-  width: 100px;
-  height: 200px;
-
-}
-.contenedor-premio{
-  display: flex;
-  flex-direction: row;
-  position: relative;
-  top: -50px;
-  margin-left: 20px;
-}
-.premio{
-  display: flex;
-  flex-direction: row;
-}
-.premio1 p{
-  font-size: .6rem;
-  background-color: rgba(58, 244, 155, .6);
-  padding: 0;
-  margin: 0;
-  width: 60px;
-}
-.premio img{
-  width: 60px;
-  height: 50px;
-}
+  .imagen-ahorcado img{
+    width: auto;
+    height: 200px;
+  }
+  footer{
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    height: 5vh;
+    margin: .5rem auto;
+    padding: 1rem;
+    margin: 0;
+    background-color: #e3e3dc;
+  }

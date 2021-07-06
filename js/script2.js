@@ -1,10 +1,8 @@
-
-
 let texto = ["casa", "hola", "campo", "mamá", "papá", "pepe", "tía", "mono", "mano"];
-let contador = [];
-let puntaje = [];
-let sumContador;
-let sumaPuntos;
+let contador_dictado = [];
+let puntaje_dictado = [];
+let sumContador_dictado;
+let sumaPuntos_dictado;
 
 
 intentos();
@@ -33,13 +31,13 @@ comprobar.addEventListener('click', ()=>{
   console.log("palabra:" + palabra);
   if (palabra == texto[0].toUpperCase()) {
     console.log("texto[0]");
-    puntaje.push(5);
+    puntaje_dictado.push(5);
     speak("correcto");
     funGreen();
   }
   else {
     console.log("incorrecto");
-    puntaje.push(-3);
+    puntaje_dictado.push(-3);
     speak("Te equivocaste jajajaja pasa al siguiente");
     funRed();
   }
@@ -54,21 +52,21 @@ function limpiarValor() {
 
 
 function scoring() {
-  sumaPuntos = puntaje.reduce((a, b) => {
+  sumaPuntos_dictado = puntaje_dictado.reduce((a, b) => {
     return a + b;
   }, 0)
 
-  document.querySelector('.puntaje').innerHTML = "Puntaje: " + sumaPuntos;
-  console.log("sumaPuntos = " + sumaPuntos);
+  document.querySelector('.puntaje_dictado').innerHTML = "puntaje: " + sumaPuntos_dictado;
+  console.log("sumaPuntos = " + sumaPuntos_dictado);
 }
 
 
 
 function intentos() {
-  sumContador = contador.reduce((a, b) => {
+  sumContador_dictado = contador_dictados.reduce((a, b) => {
     return a + b;
   }, 1)
-  document.querySelector('.intento').innerHTML = "Turno: " + sumContador;
+  document.querySelector('.intento').innerHTML = "Turno: " + sumContador_dictado;
 }
 
 
@@ -80,7 +78,7 @@ siguiente.addEventListener('click', function(){
   console.log("texto:" + texto[0]);
   console.log(texto.length);
   boton.innerHTML = "Escuchar";
-  contador.push(1);
+  contador_dictado.push(1);
   clearTime();
   limpiarValor();
   intentos();
@@ -88,8 +86,8 @@ siguiente.addEventListener('click', function(){
 })
 //-------------------Local Storage-----------------------------------------//
 function guardarLocalStorage() {
-  localStorage.setItem("puntuacion", sumaPuntos);
-  localStorage.setItem("Intentos", sumContador);
+  localStorage.setItem("puntuacion", sumaPuntos_dictado);
+  localStorage.setItem("Intentos", sumContador_dictado);
 }
 
 function obtenerLocalStorage() {
@@ -98,72 +96,3 @@ function obtenerLocalStorage() {
   let intentos1 = localStorage.getItem('Intentos');
   document.querySelector('.lastintento').innerHTML = "Últimos Intentos: " + intentos1;
 }
-
-//---------------------------------fondo parpadeante ------------------------------//
-
-let Item = document.querySelector(".juego_dictado");
-let prueba;
-
-
-function clearTime() {
-  Item.style.backgroundColor = "white";
-  clearTimeout(prueba)
-}
-
-function funRed() {
-  Item.style.backgroundColor = "red";
-  prueba = setTimeout(funWhite2, 400);
-}
-
-
-
-function funGreen() {
-  Item.style.backgroundColor = "green";
-  prueba = setTimeout(funWhite, 400);
-}
-
-function funWhite() {
-  Item.style.backgroundColor = "white";
-  prueba = setTimeout(funGreen, 400);
-}
-
-function funWhite2() {
-  Item.style.backgroundColor = "white";
-  prueba = setTimeout(funRed, 400);
-}
-
-
-//-------------------Cuenta regresiva------------------------------------//
-
-let dias;
-let horas;
-let minutos;
-let segundos;
-let countDownDate;
-let diferencia;
-let now;
-
-countDownDate = new Date("Jul 13, 2021 23:59:59").getTime();
-
-let tiempo = setInterval(function() {
-  now = new Date().getTime();
-  diferencia = countDownDate - now;
-  dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-  horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
-  segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
-
-  document.querySelector('.dias').innerHTML = "Entrega en " + dias + " días";
-  document.querySelector('.horas').innerHTML = "Horas " + horas;
-  document.querySelector('.minutos').innerHTML = "Minutos " + minutos;
-  document.querySelector('.segundos').innerHTML = "Segundos " + segundos;
-
-  if (diferencia <= 0) {
-    clearInterval(tiempo);
-    let time = document.querySelector('.time');
-    time.innerHTML = "Bienvenido al juego"
-  }
-}, 1000);
-
-
-//---------------------------------------------------------------//

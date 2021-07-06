@@ -12,76 +12,61 @@
 </head>
 
 <body>
-<header class="d-flex justify-content-around">
-  <ul class="menu navbar navbar-expand-sm bg-light navbar-light d-flex justify-content-around col-12 ">
-    <li> <a href="./index.html">SUMA</a> </li>
-    <li> <a href="./resta.html">RESTA</a> </li>
-    <li class="logo"></li>
-    <li> <a href="./dictado.html">DICTADO</a></li>
-    <li> <a href="./ahorcado.html">AHORCADO</a></li>
-    <!-- <li> <a href="">TIENDA</a></li> -->
-  </ul>
-</header>
+  <header class="d-flex justify-content-around">
+    <ul class="menu navbar navbar-expand-sm bg-light navbar-light d-flex justify-content-around col-12 ">
+      <li> <a href="./index.html">SUMA</a> </li>
+      <li> <a href="./resta.html">RESTA</a> </li>
+      <li class="logo"></li>
+      <li> <a href="./dictado.html">DICTADO</a></li>
+      <li> <a href="./ahorcado.html">AHORCADO</a></li>
+      <!-- <li> <a href="">TIENDA</a></li> -->
+    </ul>
+  </header>
 
-<section class="time">
-  <h3 class="dias">Días</h3>
-  <h3 class="horas">Horas</h3>
-  <h3 class="minutos">Minutos</h3>
-  <h3 class="segundos">Segundos</h3>
-</section>
+  <section class="time">
+    <h3 class="dias">Días</h3>
+    <h3 class="horas">Horas</h3>
+    <h3 class="minutos">Minutos</h3>
+    <h3 class="segundos">Segundos</h3>
+  </section>
 
-<form id="radio_box">
-  <input type="radio" id="facil" name="dificultad" value="1">
-  <label for="facil">Fácil</label>
-  <input type="radio" id="medio" name="dificultad" value="2">
-  <label for="facil">Medio</label>
-  <input type="radio" id="dificil" name="dificultad" value="3">
-  <label for="facil">Difícil</label>
-  <input type="radio" id="ultra" name="dificultad" value="4">
-  <label for="facil">Ultra Difícil</label>
 
-</form>
+  <div class="juego-ahorcado d-flex">
+    <form id="radio_box">
+      <input type="radio" id="facil" name="dificultad" value="1">
+      <label for="facil">Fácil</label>
+      <input type="radio" id="medio" name="dificultad" value="2">
+      <label for="facil">Medio</label>
+      <input type="radio" id="dificil" name="dificultad" value="3">
+      <label for="facil">Difícil</label>
+      <input type="radio" id="ultra" name="dificultad" value="4">
+      <label for="facil">Ultra Difícil</label>
+    </form>
 
-<div class="juegoGeneral d-flex">
-
-  <div class="bloque1 d-block">
-    <div class="letraIngresada d-block">
-      <input  type="text" id="letraIngresada" name=""  maxlength="1" onkeyup="javascript:this.value=this.value.toUpperCase()">
-      <button id="botonLetra" class="btn btn-warning" type="button" name="button">Letra</button>
-    </div>
-
-    <div class="IntentosLetras d-block">
-      <p class="intentosTotales">Intentos: </p>
-      <p class="intentosErroneos">Intentos Erroneos: </p>
-      <p class="intentosAcertados">Intentos Acertados: </p>
+    <input type="text" id="letraIngresada" name="letraIngresada" maxlength="1" pattern="[A-Z]{1}" onkeyup="javascript:this.value=this.value.toUpperCase()" autofocus required>
+    <button id="botonLetra" class="btn btn-warning" type="button" name="letraIngresada">Letra</button>
+    <p class="intentosTotales">Intentos: </p>
+    <p class="intentosErroneos">Intentos Erroneos: </p>
+    <p class="intentosAcertados">Intentos Acertados: </p>
+  </div>
+  <div class="juego_ahorcado">
+    <div class="reto">
     </div>
   </div>
-  <div class="bloque2 d-block">
-    <div class="juego_ahorcado">
-      <div class="reto">
-      </div>
-    </div>
+  <div class="letrasUsadas d-flex">
+    <p class="letras">Letras Usadas: </p>
   </div>
-  <div class="bloque3 d-flex">
-    <div class="letrasUsadas d-flex">
-      <p class="letras">Letras Usadas: </p>
-    </div>
+  <div class="imagen-ahorcado d-inline-flex">
+    <img src="./img/base.png" id="img_juego" alt="">
   </div>
-  <div class="bloque4 d-flex">
-    <div class="imagen-ahorcado d-inline-flex">
-      <img src="./img/base.png" id="img_juego"alt="">
-    </div>
-  </div>
-</div>
-<div class="contenedor-premio">
-  <div class="premio"></div>
-</div>
 
-<footer class="footer-2">
-  COPYRIGHT 2021 FIDEL PARABACUTO
-</footer>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+
+
+  <footer class="footer-2">
+    COPYRIGHT 2021 FIDEL PARABACUTO
+  </footer>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 </body>
 <script src="./js/script3.js"></script>
 
