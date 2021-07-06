@@ -161,18 +161,17 @@
     background-color:#002234;
 
   }
-  .opciones,
-  .opciones_resta{
+  .opciones{
     display: block;
     justify-content: center;
     opacity: 0;
     position: absolute;
+    left: 0;
     text-align: center;
-    width: 300px;
-    height: 250px;
+    width: 50%;
+    height: 40%;
     padding: 1rem;
-    border: 1px solid #CCC;
-    border-radius: 1rem;
+    border: 3px solid #CCC;    
     background-color: rgba(110, 110, 110, 0.86);
     transition: .5s ease-out;
     z-index: 1;
@@ -194,11 +193,11 @@
     padding: .5rem;
     margin: .5rem auto;
   }
-  .opciones #comenzar{
+  .opciones .comenzar{
     width: 8rem;
     padding: .3rem;
     margin: 0 auto;
-    border-radius: .4rem;
+    border-radius:   .4rem;
     background-color: rgba(194, 136, 26, 0.9);
   }
   label{

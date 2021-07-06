@@ -43,19 +43,20 @@ let intervalo;
 mensaje.style.display = "none"
 let facil = document.getElementById('suma_facil');
 let dificil = document.getElementById('suma_dificil');
-let boton_inicio = document.querySelector('#comenzar');
+let boton_inicio = document.querySelector('.comenzar');
 let boton_iniciar = document.querySelector('.iniciar')
+let boton_iniciar2 = document.querySelector('.iniciar2')
 let turnos_suma = document.querySelector('#turno_suma');
 let aciertos = [];
 let sumaAciertos;
 let container_derecho = document.querySelector('.containter_rigth')
-console.log(container_derecho);
-let opciones = document.querySelector('.opciones');
+let opciones = document.getElementsByClassName('opciones');
+
 //----------------------------Funciones---------------------------------//
 boton_inicio.addEventListener('click', crearJuego)
 boton_iniciar.addEventListener('click', mostrar)
+boton_iniciar2.addEventListener('click', mostrar)
 function crearJuego(){
-
   if (facil.checked) {
     crearOperacion();
     intentos();
@@ -67,15 +68,15 @@ function crearJuego(){
     obtenerLocalStorage();
   }else {
     alert("Debes seleccionar una opción");
-    recargarPagina()
   }
   opciones.style.display = "none";
   container_derecho.classList.remove('containter_rigth')
 }
 
-
 function mostrar(){
-  opciones.classList.toggle('ocultar');
+  for (let i = 0; i < opciones.length; i++) {
+    opciones[i].classList.toggle('ocultar');
+  }
 }
 
 function crearOperacion() {
