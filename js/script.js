@@ -100,10 +100,18 @@ function crearJuego(){
       text: "Se reinciará el juego"});
     setTimeout(recargarPagina,1000);
   }
-  for (let i = 0; i < opciones.length; i++) {
-    opciones[i].style.display = "none";
-    container_derecho[i].classList.remove('containter_rigth');
+  if (facil.checked || dificil.checked) {
+    for (let i = 0; i < opciones.length; i++) {
+      opciones[0].style.display = "none";
+      container_derecho[0].classList.remove('containter_rigth');
+    }
+  }else if (resta_facil.checked || resta_dificil.checked) {
+    for (let i = 0; i < opciones.length; i++) {
+      opciones[1].style.display = "none";
+      container_derecho[1].classList.remove('containter_rigth');
+    }
   }
+
 }
 
 function mostrar(){
@@ -150,7 +158,7 @@ function comprobarResultado() {
       title: "CORRECTO",
       text: "Vamos Campeón"
     });
-    setTimeout(recargarPagina,2000);;
+
   }else if (operacion_resta == "-" && resultadoResta == resultadoIngresado2) {
     puntaje.push(5);
     aciertos.push(1);
@@ -201,14 +209,11 @@ function intentos_resta() {
     return a + b;
   }, 0)
   intento_resta.innerHTML = "Turno: " + sumContador_resta;
-
 }
 
 function limpiarValor_sumRes() {
-  resultadoIngresado1 = parseInt(document.getElementById('resultado_suma').value);
-  resultadoIngresado1.value = "";
-  resultadoIngresado2 = parseInt(document.getElementById('resultado_resta').value);
-  resultadoIngresado2.value = "";
+  document.getElementById('resultado_suma').value = "";
+  document.getElementById('resultado_resta').value = "";
 }
 
 function juegoTerminadoSuma(){
@@ -221,7 +226,7 @@ function juegoTerminadoSuma(){
   }
 }
 function juegoTerminadoResta(){
-  if (turno_resta.value < sumContador_resta) {
+  if (turno_resta.value < sumContador_resta ) {
     swal.fire({
       title: "Terminaste el juego",
       text: `Acertaste: ${opAciertos} de un total de ${turno_resta.value}`
@@ -291,9 +296,9 @@ function obtenerLocalStorage_sumres() {
   document.querySelector('.lastpuntaje_resta').innerHTML = "Último puntaje: " + puntaje_resta;
 
   let intentos_suma = localStorage.getItem('Intentos');
-  document.querySelector('.lastintento_suma').innerHTML = "Últimos Intentos: " + intentos_suma;
+  document.querySelector('.lastintento_suma').innerHTML = "Últimos Intentos: " + parseInt(intentos_suma - 1);
   let intentos_resta = localStorage.getItem('Intentos_resta');
-  document.querySelector('.lastintento_resta').innerHTML = "Últimos Intentos: " + intentos_resta;
+  document.querySelector('.lastintento_resta').innerHTML = "Últimos Intentos: " + parseInt(intentos_resta - 1);
 }
 
 //-------------------------contador segundos---------------------//
