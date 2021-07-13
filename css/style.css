@@ -281,10 +281,10 @@
 
   }
   .container_resta .containter_rigth::after{
-    background-image: url("../img/dictado_.jpg");
+    background-image: url("../img/resta_.jpg");
   }
   .container_dictado .containter_rigth::after{
-    background-image: url("../img/resta_.jpg");
+    background-image: url("../img/dictado_.jpg");
   }
   .container_ahorcado .containter_rigth::after{
     background-image: url("../img/ahorcado_.jpg");
@@ -509,7 +509,7 @@
     padding: 1rem;
     margin: 0 auto;
     width: 100%;
-    background-color: rgba(16, 135, 163, 0.76);
+    background-color: rgba(30, 0, 214, 0.87);
     font-size: 1rem;
   }
   .form_ahorcado label{
@@ -524,7 +524,7 @@
     align-items: flex-end;
     padding: 1rem;
     letter-spacing: .2rem;
-    background-color: rgba(67, 37, 252, 0.98);
+    background-color: rgba(80, 51, 255, 0.91);
     margin-top: 4rem;
 
   }
@@ -542,7 +542,7 @@
     margin: 0 auto;
     font-size: 1.2rem;
     color: #fff;
-    background-color: rgba(67, 37, 252, 0.78);
+    background-color: rgba(80, 51, 255, 0.71);
   }
   #letraIngresada{
     font-size: 2rem;
@@ -572,12 +572,16 @@
   .juego_letra input{
     height: 50px;
     width: 80px;
-    border: 2px dotted white;
+    border: 3px solid white;
     background-color: inherit;
   }
   .juego_letra button{
     height: 50px;
     width: 100px;
+    background-color: rgb(28, 0, 255);
+    border: 1px solid #f0f0f0;
+    border-radius: 3px;
+
   }
   .imagen-ahorcado{
     width: 100%;

@@ -48,7 +48,7 @@ jQuery(document).ready(function($) {
 function ocultarInicio(){
   $('.intentos_num').hide();
   $('.form_ahorcado').fadeOut();
-  $('.containter_rigth').removeClass('containter_rigth');
+  $('.container_ahorcado .containter_rigth').removeClass('containter_rigth');
 }
 
 //----------------Crear juego---------------//
