@@ -21,13 +21,38 @@
     }
     .contenedor_menu .menu{
       display: flex;
-      justify-content: space-around;
       align-items: center;
       list-style: none;
-      background-color: rgba(4, 4, 4, 0.91);
+      background-color: rgba(4, 4, 4, 1);
       height: 100%;
       margin: 0;
       padding: 0;
+    }
+    .contenedor_menu .menu li{
+      margin: 0 3.5rem;
+    }
+    .contenedor_menu .menu li:first-child{
+      margin: 0;
+    }
+
+    .menu img{
+      width: 40px;
+      height: 40px;
+      text-align: left;
+      margin-left: .4rem;
+      position: relative;
+    }
+    .menu .title{
+      color: rgba(122, 66, 159, 0.84);
+      letter-spacing: .1rem;
+      font-family: 'Press Start 2P';
+      padding: .9rem;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      background-color: rgba(122, 66, 159, 0.14);
+      justify-content: flex-start;
+      margin: 0;
     }
 
     .menu a{
@@ -41,7 +66,7 @@
       color: #e4e0e0;
       letter-spacing: .6rem;
       transition: 0.5s ease-out;
-      background-color: rgba(4, 4, 4, 0.6);
+      background-color: rgba(122, 66, 159, 0.84);
       padding: 1.5rem;
       font-weight: 500;
     }
@@ -76,9 +101,8 @@
 
     .img_fondo h1 {
       font-size: 4rem;
-      font-weight: bold;
-      font-family: 'Press Start 2P', cursive;
-      color: rgba(158, 152, 152, 0.7);
+      font-family: 'Press Start 2P';
+      color: rgba(255, 255, 255, 1);
       letter-spacing: .7rem;
     }
 
@@ -94,7 +118,7 @@
     .titulo-cap {
       position: absolute;
       width: 100%;
-      bottom: 50%;
+      bottom: 0;
       text-align: center;
     }
   .container_suma,
@@ -118,9 +142,8 @@
   }
   .containter_left h1{
     font-family: 'Roboto', sans-serif;
-    font-weight: bold;
     font-size: 10rem;
-    letter-spacing: .5rem;
+    letter-spacing: .2rem;
   }
   .act_boton{
     width: 50%;
@@ -135,19 +158,31 @@
     justify-content: center;
   }
   .imagen_left img{
+    width: 350px;
+    height: 350px;
+
+  }
+
+  img.left2{
     width: 250px;
     height: 350px;
+  }
+  img.left4{
+    margin-top: 4rem;
+    width: 350px;
+    height: 380px;
   }
 
   .container_dictado .containter_left h1{
     font-weight: bold;
     font-size: 8rem;
-    letter-spacing: .5rem;
+    letter-spacing: .1rem;
   }
   .container_ahorcado .containter_left h1{
     font-weight: bold;
-    font-size: 7rem;
-    letter-spacing: .5rem;
+    font-size: 6rem;
+    letter-spacing: .2rem;
+    margin-top: 4rem;
   }
   .container_after,
   .containter_rigth{
@@ -159,20 +194,20 @@
   }
   .container_suma .containter_left{
     background-color:#002234;
-
   }
+
   .opciones{
     display: block;
     justify-content: center;
     opacity: 0;
     position: absolute;
-    left: 0;
+    left: 9%;
     text-align: center;
-    width: 50%;
+    width: 30%;
     height: 40%;
     padding: 1rem;
-    border: 3px solid #CCC;    
-    background-color: rgba(110, 110, 110, 0.86);
+    border: 3px solid #fff;
+    background-color: rgba(110, 110, 110, 0.96);
     transition: .5s ease-out;
     z-index: 1;
   }
@@ -193,7 +228,8 @@
     padding: .5rem;
     margin: .5rem auto;
   }
-  .opciones .comenzar{
+  .opciones .comenzar,
+  .opciones .comenzar_resta{
     width: 8rem;
     padding: .3rem;
     margin: 0 auto;
@@ -218,24 +254,21 @@
     outline: none;
     border: none;
   }
-  .boton-inicio{
-    position: absolute;
-    display: flex;
-    width: 50%;
-    height: 55%;
-    justify-content: flex-end;
-    align-items: flex-end;
-  }
-  .container_suma .container_after, .container_suma .containter_rigth{
+
+  .container_suma .container_after,
+  .container_suma .containter_rigth{
     background-color: #0c2430;
     display: block;
   }
-  .container_suma .containter_rigth::after{
+  .container_suma .containter_rigth::after,
+  .container_resta .containter_rigth::after,
+  .container_dictado .containter_rigth::after,
+  .container_ahorcado .containter_rigth::after{
     content: "";
     background-image: url("../img/suma_.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: top;
     position: absolute;
     height: 100%;
     width: 50%;
@@ -244,40 +277,71 @@
     right: 0;
     left: 50;
     bottom: 0;
-  }
 
+  }
+  .container_resta .containter_rigth::after{
+    background-image: url("../img/dictado_.jpg");
+  }
+  .container_dictado .containter_rigth::after{
+    background-image: url("../img/resta_.jpg");
+  }
+  .container_ahorcado .containter_rigth::after{
+    background-image: url("../img/ahorcado_.jpg");
+  }
   .container_suma .container_after .puntaje_suma,
-  .container_suma .containter_rigth .puntaje_suma{
+  .container_suma .containter_rigth .puntaje_suma,
+  .container_resta .container_after .puntaje_resta,
+  .container_resta .containter_rigth .puntaje_resta,
+  .container_dictado .container_after .puntaje_dictado,
+  .container_dictado .containter_rigth .puntaje_dictado,
+  .container_ahorcado .container_after .puntaje_ahorcado,
+  .container_ahorcado .containter_rigth .puntaje_ahorcado{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgba(228, 228, 228, 0.81);
+    background-color: rgba(80, 51, 255, 0.91);
     padding: .7rem;
     letter-spacing: .5rem;
   }
   .container_suma .container_after #countDownGame,
-  .container_suma .containter_rigth #countDownGame{
-    background-color: rgba(190, 190, 190, 0.56);
+  .container_suma .containter_rigth #countDownGame,
+  .container_resta .container_after #countDownGame_resta,
+  .container_resta .containter_rigth #countDownGame_resta{
+    background-color: rgba(80, 51, 255, 0.68);
     padding: .5rem;
     text-align: center;
   }
   .container_suma .container_after .intentos,
-  .container_suma .containter_rigth .intentos{
+  .container_suma .containter_rigth .intentos,
+  .container_resta .container_after .intentos,
+  .container_resta .containter_rigth .intentos,
+  .container_dictado .container_after .intentos,
+  .container_dictado .containter_rigth .intentos,
+  .container_ahorcado .container_after .intentos,
+  .container_ahorcado .containter_rigth .intentos{
     display: flex;
     justify-content: space-between;
-    background-color: rgba(228, 228, 228, 0.81);
+    align-items: center;
+    background-color: rgba(80, 51, 255, 0.91);
     padding: .5rem;
     letter-spacing: .2rem;
   }
+  .container_ahorcado .container_after .intentos,
+  .container_ahorcado .containter_rigth .intentos{
+    margin-top: 4rem;
+  }
   .container_suma .container_after .operacion,
-  .container_suma .containter_rigth .operacion{
+  .container_suma .containter_rigth .operacion,
+  .container_resta .container_after .operacion,
+  .container_resta .containter_rigth .operacion{
     font-size: 2.5rem;
     font-weight: bold;
     margin: 1rem auto;
     text-align: center;
     letter-spacing: .5rem
   }
-  .container_suma #resultado_suma, #resultado_resta{
+  .container_suma #resultado_suma,
+  #resultado_resta{
     background-color: #0c2430;
     width: 6rem;
     color: #fff;
@@ -286,36 +350,246 @@
     border: none;
     outline: none;
   }
-  .container_suma .botones{
-    margin: .5rem;
+  .container_suma .botones,
+  .container_resta .botones,
+  .container_dictado .botones{
     display: flex;
     justify-content: space-around;
   }
-
+  .container_resta .container_after,
+  .container_resta .containter_rigth{
+    background-color: #5f3a78;
+  }
+  .container_dictado .container_after,
+  .container_dictado .containter_rigth{
+    background-color: #f99d28;
+  }
   .container_resta .containter_left{
     background-color: #4f2869;
   }
-  .container_resta .containter_rigth{
-    background-color: #5f3a78;
+  .img-dictado{
+    height: 380px;
+    width: 100%;
+    position: relative;
+  }
+  .imgDictado{
+    width: 400px;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+  }
+  .botones{
+    display: flex;
+
+  }
+  .btn:hover{
+    background-color: rgba(34, 16, 143, 0.89);
+    color: #dadada;
+    transition: 1s ease;
+  }
+  .btn{
+    width: 50%;
+    border: .5px solid white;
+    margin: 0 auto;
+    padding: 1rem;
+    border-radius: 0;
+    letter-spacing: .5rem;
+    text-transform: uppercase;
+    background-color: rgba(21, 5, 120, 0.92);
+    font-weight: bolder;
+    color: #fff;
+  }
+
+  .btn_enviar{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    letter-spacing: .2rem;
+    padding: 1rem;
+    border: 0;
+    border-radius: 0;
+    text-transform: uppercase;
+    background-color: rgba(67, 37, 252, 0.98);
+    color: #fff;
+    font-size: 1rem;
+
+  }
+  .boton-inicio{
+    position: absolute;
+    display: flex;
+    width: 50%;
+    height: 55%;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin-top: 15px;
+  }
+  .btn_inicio_dictado{
+    height: 61%;
+  }
+  .container_dictado .containter_left .boton_inicio{
+    height: 400px;
+  }
+  .btn_iniciar{
+    width: 40%;
+    padding: .7rem;
+    border-radius: .2rem;
+    border: 0;
+    letter-spacing: .2rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+    background-color: rgba(21, 5, 120, 0.92);
+    font-weight: bolder;
+    color: #fff;
+  }
+  .btn_iniciar:hover{
+    background-color: rgba(31, 8, 172, 0.98);
+    transition: 1s ease-out;
+
+  }
+  .btn_iniciar_dictado{
+    width: 40%;
+    padding: .8rem;
+    border-radius: 0;
+    border: 0;
+    letter-spacing: .2rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+    background-color: rgba(21, 5, 120, 0.92);
+    font-weight: bolder;
+    margin-top: 3rem;
+    color: #fff;
+  }
+
+
+  .juego_dictado{
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    color: white;
+  }
+  #texto_dictado{
+    display: block;
+    width: 50%;
+    height: 40px;
+    background-color: inherit;
+    border: 0;
+    border-bottom: 3px inset white;
+    letter-spacing: .4rem;
+    color: white;
+    text-align: center;
   }
   .container_dictado .containter_left{
     background-color: #f48c06;
   }
+
   .container_dictado .containter_rigth{
     background-color: #faa307;
+    display: block;
   }
-  .container_ahorcado .containter_left{
-    background-color: #d00000;
-  }
-  .container_ahorcado .containter_rigth{
-    background-color: #dc2f02;
+  .container_dictado .containter_rigth .botones{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
   }
 
+  .container_ahorcado .containter_left{
+    background-color: #002234;
+  }
+  .container_ahorcado .container_after,
+  .container_ahorcado .containter_rigth{
+    background-color: rgba(12, 36, 48);
+  }
+
+
+  .form_ahorcado{
+    display: flex;
+    padding: 1rem;
+    margin: 0 auto;
+    width: 100%;
+    background-color: rgba(16, 135, 163, 0.76);
+    font-size: 1rem;
+  }
+  .form_ahorcado label{
+    margin: 0 .7rem;
+  }
+  .form_ahorcado input{
+    margin: 0 2rem;
+  }
+  .intentos_ahorcado{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    padding: 1rem;
+    letter-spacing: .2rem;
+    background-color: rgba(67, 37, 252, 0.98);
+    margin-top: 4rem;
+
+  }
+  .intentosErroneos, .intentosAcertados{
+    display: flex;
+    margin-top: 1rem;
+  }
+  .letrasUsadas{
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    border: 2px solid rgb(175, 175, 175);
+    margin: 0 auto;
+    font-size: 1.2rem;
+    color: #fff;
+    background-color: rgba(67, 37, 252, 0.78);
+  }
+  #letraIngresada{
+    font-size: 2rem;
+    color: #fff;
+    font-weight: bolder;
+    text-align: center;
+  }
+  .juego_letra{
+    width: 100%;
+    height: 190px;
+    display: block;
+    margin: 0 auto;
+    border: 2px inset white rgb(175, 175, 175);
+  }
+  .jletra, .reto{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 1rem auto;
+    font-size: 3rem;
+  }
+  .letraIngresada{
+    margin-left: 1rem;
+    font-size: 2rem;
+
+  }
+  .juego_letra input{
+    height: 50px;
+    width: 80px;
+    border: 2px dotted white;
+    background-color: inherit;
+  }
+  .juego_letra button{
+    height: 50px;
+    width: 100px;
+  }
+  .imagen-ahorcado{
+    width: 100%;
+    height: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    border: 2px inset rgb(175, 175, 175);
+  }
   .imagen-ahorcado img{
     width: auto;
     height: 200px;
   }
   footer{
+    display: flex;
     position: sticky;
     bottom: 0;
     width: 100%;
@@ -323,5 +597,9 @@
     margin: .5rem auto;
     padding: 1rem;
     margin: 0;
-    background-color: #e3e3dc;
+    background-color: rgba(4, 4, 4, 1);
+    letter-spacing: .5rem;
+    color: #fff;
+    justify-content: center;
+    align-items: center;
   }

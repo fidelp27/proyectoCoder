@@ -24,16 +24,16 @@ jQuery(document).ready(function($) {
 
     if (seleccion == 1 ) {
       crearPalabra(arrayMono)
-
+      ocultarInicio()
     }else if (seleccion == 2) {
       crearPalabra(arrayBis)
-
+      ocultarInicio()
     }else if (seleccion == 3) {
       crearPalabra(arrayTri)
-
+      ocultarInicio()
     }else if (seleccion == 4) {
       crearPalabra(arrayPoli)
-
+      ocultarInicio()
     }else {
       console.log("Selecciona una opción");
     }
@@ -41,7 +41,11 @@ jQuery(document).ready(function($) {
   }
 
 );
-
+function ocultarInicio(){
+  $('.intentos_num').hide();
+  $('.form_ahorcado').fadeOut();
+  $('.containter_rigth').removeClass('containter_rigth');
+}
 
 //----------------Crear juego---------------//
 function crearPalabra(arr){
@@ -126,6 +130,7 @@ function validarCampo(){
         guiones[i] = palabraJuego[i].replace("_", `${letraIngresada}`)
       }
       $('.reto').html(`<div class 'guiones'>${guiones.join(' ')}</div>`)
+
     }
     errorLetra(letraIngresada)
     numeroAzar()
