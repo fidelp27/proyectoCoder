@@ -35,7 +35,11 @@ jQuery(document).ready(function($) {
       crearPalabra(arrayPoli)
       ocultarInicio()
     }else {
-      console.log("Selecciona una opción");
+      swal.fire({
+        icon: "warning",
+        title: "Debes seleccionar una opción",
+        text: "Se reinciará el juego"});
+      setTimeout(recargarPagina_ahorcado,1000);
     }
     mostrarPalabra()
   }
@@ -71,10 +75,17 @@ function mostrarPalabra(){
 function errorLetra(letraIngresada){
   letraIngresada = $('#letraIngresada').val();
   if(validarCampo() == false){
-    alert("Debes ingresar una letra");
+    swal.fire({
+      icon: "warning",
+      title: "Debes seleccionar una letra"
+    });
+
   }
   else if (letraUsada.includes(letraIngresada)) {
-    alert(`Ya usaste la letra ${letraIngresada}`);
+    swal.fire({
+      icon: "warning",
+      title: `Ya usaste la letra ${letraIngresada}`
+    });
   }else if (!palabraJuego.includes(letraIngresada)) {
     intentoErroneo = intentoErroneo + 1;
     $('.intentosErroneos').html(`<p class="intentosErroneos">Intentos Erróneos: ${intentoErroneo}</p>`);
@@ -95,15 +106,28 @@ function errorLetra(letraIngresada){
 //-----------------------Finalizar juego------------------//
 function finalizarJuego(){
     if (!guiones.includes('_')==true) {
-      alert("ganaste");
-      recargarPagina();
+      swal.fire({
+        icon: "success",
+        title: "GANASTE",
+        text: "Salvaste al Z"
+      });
+      swal.fire({
+        icon: "error",
+        title: "PERDISTE",
+        text: "Z pasó a mejor vida"
+      });
+      recargarPagina_ahorcado();
     }else if (intentoErroneo == 7) {
-      alert(`perdiste, la palabra era: ${palabraAleatoria}`);
-      recargarPagina();
+      swal.fire({
+        icon: "error",
+        title: "PERDISTE",
+        text: `La palabra era: ${palabraAleatoria}`
+      });
+      setTimeout(recargarPagina_ahorcado,2000)
     }
 }
 //------------------ Varios------------------------------//
-function recargarPagina(){
+function recargarPagina_ahorcado(){
   window.location.reload(true);
 }
 

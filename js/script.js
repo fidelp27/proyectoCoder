@@ -94,7 +94,11 @@ function crearJuego(){
     intentos_resta();
     obtenerLocalStorage_sumres();
   }else {
-    alert("Debes seleccionar una opción");
+    swal.fire({
+      icon: "warning",
+      title: "Debes seleccionar una opción",
+      text: "Se reinciará el juego"});
+    setTimeout(recargarPagina,1000);
   }
   for (let i = 0; i < opciones.length; i++) {
     opciones[i].style.display = "none";
@@ -141,15 +145,27 @@ function comprobarResultado() {
   if (operacion_suma == "+" && resultadoSuma == resultadoIngresado1) {
     puntaje.push(5);
     aciertos.push(1);
-    alert("Correcto");
+    swal.fire({
+      icon: "success",
+      title: "CORRECTO",
+      text: "Vamos Campeón"
+    });
+    setTimeout(recargarPagina,2000);;
   }else if (operacion_resta == "-" && resultadoResta == resultadoIngresado2) {
     puntaje.push(5);
     aciertos.push(1);
-    alert("Correcto");
+    swal.fire({
+      icon: "success",
+      title: "Vamos Campeón",
+    });
   }else{
     puntaje.push(-3);
-    alert("Incorrecto")
-  }  
+    swal.fire({
+      icon: "error",
+      title: "INCORRECTO",
+      text: "Debes esforzarte un poco"
+    });
+  }
 }
 
 function scoring() {
@@ -157,7 +173,6 @@ function scoring() {
     return a + b;
   }, 0)
   document.querySelector('.puntos_suma').innerHTML = "Puntaje: " + sumaPuntos;
-  console.log(puntaje);
 }
 
 function scoring_resta() {
@@ -190,20 +205,28 @@ function intentos_resta() {
 }
 
 function limpiarValor_sumRes() {
+  resultadoIngresado1 = parseInt(document.getElementById('resultado_suma').value);
   resultadoIngresado1.value = "";
+  resultadoIngresado2 = parseInt(document.getElementById('resultado_resta').value);
   resultadoIngresado2.value = "";
 }
 
 function juegoTerminadoSuma(){
   if (turno_suma.value < sumContador) {
-    alert(`terminaste el juego. Acertaste: ${opAciertos} de un total de ${turno_suma.value}`);
-    recargarPagina();
+    swal.fire({
+      title: "Terminaste el juego",
+      text: `Acertaste: ${opAciertos} de un total de ${turno_suma.value}`
+    });
+    setTimeout(recargarPagina,2000);
   }
 }
 function juegoTerminadoResta(){
   if (turno_resta.value < sumContador_resta) {
-    alert(`terminaste el juego. Acertaste: ${opAciertos} de un total de ${turno_resta.value}`);
-    recargarPagina()
+    swal.fire({
+      title: "Terminaste el juego",
+      text: `Acertaste: ${opAciertos} de un total de ${turno_resta.value}`
+    });
+    setTimeout(recargarPagina,2000);
   }
 }
 
