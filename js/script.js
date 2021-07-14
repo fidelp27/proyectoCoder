@@ -1,5 +1,8 @@
 //--------------------------header Parallax-----------------///
+
 jQuery(document).ready(function($) {
+
+
   $('.astro1').hide();
   $('.titulo-cap h1').hide()
   $('.menu .title').hide()
@@ -33,8 +36,25 @@ jQuery(document).ready(function($) {
         $('.contenedor_menu ul').addClass('menu navbar')
       };
 });
+const url = `https://rickandmortyapi.com/api/character`;
+  personajeAzar= parseInt(Math.random()*(1 - 50+1)+50);
+
+    fetch(`${url}/${personajeAzar}`)
+        .then(res => {
+          return res.json();
+        })
+        .then(data => {
+          personaje = `${data.name}`;
+          personajeImg = `${data.image}`
+          console.log(personaje);
+          console.log(personajeImg);
+        })
+
 });
 //-----------------------Variables Suma y Resta-------------------------//
+let personaje;
+let personajeImg;
+let personajeAzar;
 let num1;
 let num2;
 let resultadoSuma;
@@ -73,7 +93,7 @@ let aciertos = [];
 let opAciertos;
 let container_derecho = document.querySelectorAll('.containter_rigth')
 let opciones = document.getElementsByClassName('opciones');
-console.log(boton_iniciar3);
+
 //----------------------------Funciones---------------------------------//
 boton_inicio.addEventListener('click', crearJuego)
 boton_inicio_resta.addEventListener('click', crearJuego)
@@ -81,18 +101,19 @@ boton_iniciar.addEventListener('click', mostrar)
 boton_iniciar2.addEventListener('click', mostrar)
 boton_iniciar3.addEventListener('click', ocultarAfter)
 
-
 function crearJuego(){
   if (facil.checked || resta_facil.checked) {
     crearOperacion();
     intentos();
     intentos_resta();
     obtenerLocalStorage_sumres()
+
   }else if (dificil.checked || resta_dificil.checked) {
     crearOperacion();
     intentos();
     intentos_resta();
     obtenerLocalStorage_sumres();
+
   }else {
     swal.fire({
       icon: "warning",
@@ -124,6 +145,9 @@ function ocultarAfter(){
   for (let i = 0; i < container_derecho.length; i++) {
     container_derecho[i].classList.toggle('containter_rigth');
   }
+  swal.fire({
+    title: "TIENES 5 INTENTOS",    
+  });
 }
 
 
@@ -154,17 +178,25 @@ function comprobarResultado() {
     puntaje.push(5);
     aciertos.push(1);
     swal.fire({
+      imageUrl: `${personajeImg}`,
+      imageWidth: "150px",
+      imageHeight: "150px",
       icon: "success",
       title: "CORRECTO",
-      text: "Vamos Campeón"
+      text: `Vamos Campeón. Desbloqueaste a: ${personaje}`,
+
     });
 
   }else if (operacion_resta == "-" && resultadoResta == resultadoIngresado2) {
     puntaje.push(5);
     aciertos.push(1);
     swal.fire({
+      imageUrl: `${personajeImg}`,
+      imageWidth: "150px",
+      imageHeight: "150px",
       icon: "success",
       title: "Vamos Campeón",
+      text: `Vamos Campeón. Desbloqueaste a: ${personaje}`
     });
   }else{
     puntaje.push(-3);
@@ -220,7 +252,7 @@ function juegoTerminadoSuma(){
   if (turno_suma.value < sumContador) {
     swal.fire({
       title: "Terminaste el juego",
-      text: `Acertaste: ${opAciertos} de un total de ${turno_suma.value}`
+      text: `Acertaste: ${opAciertos} de un total de ${turno_suma.value}`,
     });
     setTimeout(recargarPagina,2000);
   }
@@ -251,6 +283,7 @@ function recargarPagina(){
     guardarLocalStorage_sumRes();
     juegoTerminadoSuma();
 
+
   })
   botonSiguiente_resta.addEventListener("click", function(){
     crearOperacion();
@@ -259,6 +292,7 @@ function recargarPagina(){
     limpiarValor_sumRes();
     guardarLocalStorage_sumRes();
     juegoTerminadoResta();
+
 
   })
 
@@ -272,6 +306,7 @@ let botonComprobarResta = document.querySelector('.comprobar_resta');
     guardarLocalStorage_sumRes();
     detenerTiempo();
     correctas();
+
   })
   botonComprobarResta.addEventListener("click", function(){
   comprobarResultado();
@@ -279,6 +314,7 @@ let botonComprobarResta = document.querySelector('.comprobar_resta');
   guardarLocalStorage_sumRes();
   detenerTiempo();
   correctas();
+
   })
 
 //-------------------Local Storage-----------------------------------------//
@@ -319,7 +355,6 @@ function cuentaRegresiva(){
     intervalo = setTimeout("cuentaRegresiva()", 1000);
   }
 }
-
 //--------------------Detener Contador ---------------------------//
 function detenerTiempo(){
   clearTimeout(intervalo);

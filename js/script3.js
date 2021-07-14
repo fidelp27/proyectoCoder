@@ -67,7 +67,6 @@ function numeroAzar(){
   numAzar = parseInt(Math.random()*50)+1
 }
 
-
 function mostrarPalabra(){
   $('.reto').append(`<div class 'guiones'>${guiones.join(' ')}</div>`)
 }
@@ -111,11 +110,7 @@ function finalizarJuego(){
         title: "GANASTE",
         text: "Salvaste al Z"
       });
-      swal.fire({
-        icon: "error",
-        title: "PERDISTE",
-        text: "Z pasó a mejor vida"
-      });
+
       recargarPagina_ahorcado();
     }else if (intentoErroneo == 7) {
       swal.fire({
@@ -160,29 +155,6 @@ function validarCampo(){
     numeroAzar()
     formatoInput()
     setTimeout(finalizarJuego, 1000)
-
-  // let valorIngresado = $('intento');
-  // let imagen = $('.premio');
-  //
-  // const url = `https://rickandmortyapi.com/api/character`;
-  //
-  //     fetch(`${url}/${numAzar}`)
-  //         .then(res => {
-  //           return res.json();
-  //         })
-  //         .then(data => {
-  //           if (letraUsada.includes(letraIngresada)) {
-  //             continue;
-  //           }
-  //           else if (palabraJuego.includes(letraIngresada)) {
-  //             data.id = intento;
-  //             imagen.append(`<div class="premio1">
-  //                               <p>${data.name}</p>
-  //                               <img src="${data.image}">
-  //                               <p>${data.gender}</p></div>`)
-  //           }
-  //         })
-  //         .catch(err => {console.log(err)})
    });
 
 })
